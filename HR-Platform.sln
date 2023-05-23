@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR-Platform", "HR-Platform\HR-Platform.csproj", "{FC0855DA-6913-449C-B053-724122CC4D1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR-Platform", "HR-Platform\HR-Platform.csproj", "{FC0855DA-6913-449C-B053-724122CC4D1C}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{D4638A8D-81DB-4A5D-85AA-EA9692758506}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nginx", "Nginx", "{2D07A8AC-1148-4BDB-8AA2-39C620DD5224}"
+	ProjectSection(SolutionItems) = preProject
+		default.conf = default.conf
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

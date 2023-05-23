@@ -7,4 +7,15 @@ services:
       context: .
       dockerfile: HR-Platform/Dockerfile
     ports:
-    - 9100:80
+    - 80:80
+
+  nginx:
+    image: nginx:1.21.3-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+
+    volumes:
+      - ./nginx/:/etc/nginx/conf.d/
+    depends_on:
+      - hr-platform
