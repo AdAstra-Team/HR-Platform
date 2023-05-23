@@ -2,6 +2,7 @@
 
 name: CI
 
+
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "master" branch
@@ -18,15 +19,10 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          key: ${{ secrets.SSH_KEY }}
+          username: ${{ secrets.USER_NAME }}
+          password: ${{ secrets.PASSWORD }}
           script: |
-            BOT_TOKEN=${{ secrets.BOT_TOKEN }}
-            CHAT_ID=${{ secrets.CHAT_ID }}
-            export BOT_TOKEN
-            export CHAT_ID
-            cd /home/developer/monitoring/BB_monitoring
+            cd /home
             docker-compose down
             git pull
-            bash alertmanager_generator.sh
             docker-compose up -d
