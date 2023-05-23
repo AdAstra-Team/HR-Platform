@@ -6,3 +6,5 @@ services:
     build:
       context: .
       dockerfile: HR-Platform/Dockerfile
+    ports:
+    - 9100:80
