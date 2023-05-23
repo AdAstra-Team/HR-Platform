@@ -1,0 +1,32 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands to deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            BOT_TOKEN=${{ secrets.BOT_TOKEN }}
+            CHAT_ID=${{ secrets.CHAT_ID }}
+            export BOT_TOKEN
+            export CHAT_ID
+            cd /home/developer/monitoring/BB_monitoring
+            docker-compose down
+            git pull
+            bash alertmanager_generator.sh
+            docker-compose up -d
