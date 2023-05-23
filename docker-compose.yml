@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  hr-platform:
+    image: ${DOCKER_REGISTRY-}hrplatform
+    build:
+      context: .
+      dockerfile: HR-Platform/Dockerfile
