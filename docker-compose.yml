@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: HR-Platform/Dockerfile
     ports:
-    - 80:80
+    - 9100:80
 
   nginx:
     image: nginx:1.21.3-alpine
