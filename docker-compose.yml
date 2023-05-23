@@ -19,3 +19,16 @@ services:
       - ./nginx/:/etc/nginx/conf.d/
     depends_on:
       - hr-platform
+
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=maindb
+    volumes:
+      - ./volumes/data/db:/var/lib/postgresql/data
+      - ./dbscripts:/docker-entrypoint-initdb.d
+    ports:
+       - 5432:5432
+    restart: always
