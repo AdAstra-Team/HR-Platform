@@ -1,5 +1,5 @@
 ﻿using AdAstra.HRPlatform.Models;
-using AdAstra.HRPlatform.Services;
+using AdAstra.HRPlatform.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AdAstra.HRPlatform.Controllers
@@ -29,9 +29,9 @@ namespace AdAstra.HRPlatform.Controllers
         }
 
         [HttpPost("refresh")]
-        public IActionResult Refresh(AuthenticateRequest model)
+        public IActionResult Refresh(TokensModel model)
         {
-            var response = _userService.Authenticate(model);
+            var response = _userService.UpdateToken(model);
 
             if (response == null)
             {
