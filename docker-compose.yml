@@ -30,5 +30,5 @@ services:
       - ./volumes/data/db:/var/lib/postgresql/data
       - ./dbscripts:/docker-entrypoint-initdb.d
     ports:
-       - 5432:5433
+       - 5433:5433
     restart: always
