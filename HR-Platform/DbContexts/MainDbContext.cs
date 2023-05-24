@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AdAstra.HRPlatform.Entities;
+using Microsoft.EntityFrameworkCore;
 
 public class MainDbContext : DbContext
 {
-    public MainDbContext(DbContextOptions<MainDbContext> options) : base(options) { }
+    public MainDbContext(DbContextOptions<MainDbContext> options) : base(options) {
+        Database.EnsureCreated();
+    }
 
-    // Define your entity sets as DbSet properties here
-    // Example: public DbSet<User> Users { get; set; }
+    public DbSet<User> Users { get; set; }
 }
