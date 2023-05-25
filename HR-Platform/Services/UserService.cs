@@ -38,6 +38,7 @@ namespace AdAstra.HRPlatform.API.Services
 
             var token = _tokenService.GenerateAccessToken(user);
             user.RefreshToken = _tokenService.GenerateRefreshToken();
+            user.RefreshTokenExpiryTime = DateTime.Now.AddDays(7).ToUniversalTime();
             _userRepository.Update(user);
 
             return new AuthenticateResponse(user, token);
@@ -82,6 +83,7 @@ namespace AdAstra.HRPlatform.API.Services
             var newAccessToken = _tokenService.GenerateAccessToken(user);
             var newRefreshToken = _tokenService.GenerateRefreshToken();
             user.RefreshToken = newRefreshToken;
+            user.RefreshTokenExpiryTime = DateTime.Now.AddDays(7).ToUniversalTime();
             _userRepository.Update(user);
             return new AuthenticateResponse(user, newAccessToken);
         }

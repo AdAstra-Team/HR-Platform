@@ -37,14 +37,13 @@ namespace AdAstra.HRPlatform.API.Services
         {
             var result = await _context.Set<T>().AddAsync(entity);
             await _context.SaveChangesAsync();
-            Console.WriteLine(string.Join(", ", _context.Set<T>()));
             return result.Entity.Id;
         }
 
-        public async Task Update(T entity)
+        public void Update(T entity)
         {
             var result = _context.Set<T>().Update(entity);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace AdAstra.HRPlatform.API.Services.Interfaces
         T GetById(long id);
         Task<long> Add(T entity);
 
-        Task Update(T entity);
+        void Update(T entity);
         // TODO: expand if needed
     }
 }
