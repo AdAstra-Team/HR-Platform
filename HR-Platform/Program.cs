@@ -12,6 +12,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using AdAstra.HRPlatform.API.Helpers;
 using AdAstra.HRPlatform.API.Services.Interfaces;
+using AdAstra.HRPlatform.API.Services.Injection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -70,9 +71,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddScoped(typeof(IEfRepository<>), typeof(EfRepository<>));
 
 builder.Services.AddCors();
-builder.Services.AddScoped<ITokenService, TokenService>();
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IPasswordHashingService, PasswordHashingService>();
+builder.Services.AddMainServices();
 builder.Services.AddAutoMapper(typeof(UserProfile));
 
 var app = builder.Build();
