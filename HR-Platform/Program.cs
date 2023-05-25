@@ -67,7 +67,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-builder.Services.AddScoped(typeof(IEfRepository<>), typeof(UserRepository<>));
+builder.Services.AddScoped(typeof(IEfRepository<>), typeof(EfRepository<>));
 
 builder.Services.AddCors();
 builder.Services.AddScoped<ITokenService, TokenService>();

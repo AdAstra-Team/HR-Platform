@@ -6,11 +6,11 @@ using AdAstra.HRPlatform.API.Services.Interfaces;
 
 namespace AdAstra.HRPlatform.API.Services
 {
-    public class UserRepository<T>: IEfRepository<T> where T: BaseEntity
+    public class EfRepository<T>: IEfRepository<T> where T: BaseEntity
     {
         private readonly MainDbContext _context;
 
-        public UserRepository(MainDbContext context)
+        public EfRepository(MainDbContext context)
         {
             _context = context;
         }
@@ -37,6 +37,7 @@ namespace AdAstra.HRPlatform.API.Services
         {
             var result = await _context.Set<T>().AddAsync(entity);
             await _context.SaveChangesAsync();
+            Console.WriteLine(string.Join(", ", _context.Set<T>()));
             return result.Entity.Id;
         }
 

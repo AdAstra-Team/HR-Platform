@@ -10,7 +10,10 @@ namespace AdAstra.HRPlatform.API.Entities
         public string Email { get; set; }
         [JsonIgnore]
         public string Password { get; set; }
-        public string RefreshToken { get; set; }
-        public DateTime RefreshTokenExpiryTime { get; set; }
+
+        [JsonIgnore]
+        public string? RefreshToken { get; set; }
+        [JsonIgnore]
+        public DateTime? RefreshTokenExpiryTime { get; set; }
     }
 }

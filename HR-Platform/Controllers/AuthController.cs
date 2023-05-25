@@ -1,4 +1,5 @@
 ﻿using AdAstra.HRPlatform.API.Models;
+using AdAstra.HRPlatform.API.Services.Exceptions;
 using AdAstra.HRPlatform.API.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,11 +32,19 @@ namespace AdAstra.HRPlatform.API.Controllers
         [HttpPost("refresh")]
         public IActionResult Refresh(TokensModel model)
         {
-            var response = _userService.UpdateToken(model);
-
-            if (response == null)
+            AuthenticateResponse? response;
+            try
             {
-                return BadRequest(new { message = "Username or password is incorrect" });
+                response = _userService.UpdateToken(model);
+
+                if (response == null)
+                {
+                    return BadRequest(new { message = "Username or password is incorrect" });
+                }
+            } catch (ServiceLayerException ex)
+            {
+                // TODO: add logger
+                return BadRequest(ex);
             }
 
             return Ok(response);

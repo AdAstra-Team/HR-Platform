@@ -76,7 +76,9 @@ namespace AdAstra.HRPlatform.API.Services
             var username = principal.Identity?.Name; //this is mapped to the Name claim by default
             var user = _userRepository.GetAll().SingleOrDefault(u => u.Username == username);
             if (user is null || user.RefreshToken != refreshToken || user.RefreshTokenExpiryTime <= DateTime.Now)
+            {
                 throw new ServiceLayerException("Invalid client request");
+            }
             var newAccessToken = _tokenService.GenerateAccessToken(user);
             var newRefreshToken = _tokenService.GenerateRefreshToken();
             user.RefreshToken = newRefreshToken;
