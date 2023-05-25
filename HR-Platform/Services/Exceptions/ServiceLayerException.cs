@@ -1,4 +1,4 @@
-﻿namespace AdAstra.HRPlatform.Services.Exceptions
+﻿namespace AdAstra.HRPlatform.API.Services.Exceptions
 {
 
 	[Serializable]

@@ -1,6 +1,6 @@
-﻿using AdAstra.HRPlatform.Entities;
-using AdAstra.HRPlatform.Helpers;
-using AdAstra.HRPlatform.Services.Interfaces;
+﻿using AdAstra.HRPlatform.API.Entities;
+using AdAstra.HRPlatform.API.Helpers;
+using AdAstra.HRPlatform.API.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -8,7 +8,7 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace AdAstra.HRPlatform.Services
+namespace AdAstra.HRPlatform.API.Services
 {
     public class TokenService : ITokenService
     {

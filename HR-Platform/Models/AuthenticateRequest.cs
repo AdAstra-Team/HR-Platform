@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace AdAstra.HRPlatform.Models
+namespace AdAstra.HRPlatform.API.Models
 {
     public class AuthenticateRequest
     {

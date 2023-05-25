@@ -1,6 +1,6 @@
-using AdAstra.HRPlatform.Entities;
+using AdAstra.HRPlatform.API.Entities;
 
-namespace AdAstra.HRPlatform.Models
+namespace AdAstra.HRPlatform.API.Models
 {
     public class AuthenticateResponse
     {

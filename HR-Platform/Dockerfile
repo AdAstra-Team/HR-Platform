@@ -6,16 +6,16 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["HR-Platform/HR-Platform.csproj", "HR-Platform/"]
-RUN dotnet restore "HR-Platform/HR-Platform.csproj"
+COPY ["HR-Platform/API.csproj", "HR-Platform/"]
+RUN dotnet restore "HR-Platform/API.csproj"
 COPY . .
 WORKDIR "/src/HR-Platform"
-RUN dotnet build "HR-Platform.csproj" -c Release -o /app/build
+RUN dotnet build "API.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "HR-Platform.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "API.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "HR-Platform.dll"]
+ENTRYPOINT ["dotnet", "API.dll"]

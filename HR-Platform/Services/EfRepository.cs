@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AdAstra.HRPlatform.Entities;
-using AdAstra.HRPlatform.Services.Interfaces;
+using AdAstra.HRPlatform.API.Entities;
+using AdAstra.HRPlatform.API.Services.Interfaces;
 
-namespace AdAstra.HRPlatform.Services
+namespace AdAstra.HRPlatform.API.Services
 {
     public class UserRepository<T>: IEfRepository<T> where T: BaseEntity
     {

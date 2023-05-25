@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using AdAstra.HRPlatform.Entities;
-using AdAstra.HRPlatform.Models;
+using AdAstra.HRPlatform.API.Entities;
+using AdAstra.HRPlatform.API.Models;
 
-namespace AdAstra.HRPlatform.Services.Interfaces
+namespace AdAstra.HRPlatform.API.Services.Interfaces
 {
     public interface IUserService
     {

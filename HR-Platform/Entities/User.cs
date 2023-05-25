@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace AdAstra.HRPlatform.Entities
+namespace AdAstra.HRPlatform.API.Entities
 {
     public class User : BaseEntity
     {

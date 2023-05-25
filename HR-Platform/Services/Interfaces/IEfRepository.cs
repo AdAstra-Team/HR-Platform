@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using AdAstra.HRPlatform.Entities;
+using AdAstra.HRPlatform.API.Entities;
 
-namespace AdAstra.HRPlatform.Services.Interfaces
+namespace AdAstra.HRPlatform.API.Services.Interfaces
 {
     public interface IEfRepository<T> where T : BaseEntity
     {

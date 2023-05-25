@@ -1,7 +1,7 @@
-﻿using AdAstra.HRPlatform.Entities;
+﻿using AdAstra.HRPlatform.API.Entities;
 using System.Security.Claims;
 
-namespace AdAstra.HRPlatform.Services.Interfaces
+namespace AdAstra.HRPlatform.API.Services.Interfaces
 {
     public interface ITokenService
     {

@@ -1,4 +1,4 @@
-﻿using AdAstra.HRPlatform.Entities;
+﻿using AdAstra.HRPlatform.API.Entities;
 using Microsoft.EntityFrameworkCore;
 
 public class MainDbContext : DbContext

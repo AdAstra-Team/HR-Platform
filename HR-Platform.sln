@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR-Platform", "HR-Platform\HR-Platform.csproj", "{FC0855DA-6913-449C-B053-724122CC4D1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "HR-Platform\API.csproj", "{FC0855DA-6913-449C-B053-724122CC4D1C}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{D4638A8D-81DB-4A5D-85AA-EA9692758506}"
 EndProject

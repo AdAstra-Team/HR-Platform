@@ -1,8 +1,8 @@
 using AutoMapper;
-using AdAstra.HRPlatform.Entities;
-using AdAstra.HRPlatform.Models;
+using AdAstra.HRPlatform.API.Entities;
+using AdAstra.HRPlatform.API.Models;
 
-namespace AdAstra.HRPlatform.Identity
+namespace AdAstra.HRPlatform.API.Identity
 {
     public class UserProfile : Profile
     {

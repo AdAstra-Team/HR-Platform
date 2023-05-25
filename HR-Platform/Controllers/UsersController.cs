@@ -1,12 +1,12 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using AdAstra.HRPlatform.Helpers;
-using AdAstra.HRPlatform.Models;
+using AdAstra.HRPlatform.API.Helpers;
+using AdAstra.HRPlatform.API.Models;
 using Microsoft.AspNetCore.Authorization;
-using AdAstra.HRPlatform.Entities;
-using AdAstra.HRPlatform.Services.Interfaces;
+using AdAstra.HRPlatform.API.Entities;
+using AdAstra.HRPlatform.API.Services.Interfaces;
 
-namespace AdAstra.HRPlatform.Controllers
+namespace AdAstra.HRPlatform.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]

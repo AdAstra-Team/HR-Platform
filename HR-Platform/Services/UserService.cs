@@ -1,10 +1,10 @@
-using AdAstra.HRPlatform.Entities;
-using AdAstra.HRPlatform.Models;
-using AdAstra.HRPlatform.Services.Exceptions;
-using AdAstra.HRPlatform.Services.Interfaces;
+using AdAstra.HRPlatform.API.Entities;
+using AdAstra.HRPlatform.API.Models;
+using AdAstra.HRPlatform.API.Services.Exceptions;
+using AdAstra.HRPlatform.API.Services.Interfaces;
 using AutoMapper;
 
-namespace AdAstra.HRPlatform.Services
+namespace AdAstra.HRPlatform.API.Services
 {
     public class UserService : IUserService
     {

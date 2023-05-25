@@ -1,8 +1,8 @@
-﻿using AdAstra.HRPlatform.Models;
-using AdAstra.HRPlatform.Services.Interfaces;
+﻿using AdAstra.HRPlatform.API.Models;
+using AdAstra.HRPlatform.API.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AdAstra.HRPlatform.Controllers
+namespace AdAstra.HRPlatform.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]

@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace AdAstra.HRPlatform.Models
+namespace AdAstra.HRPlatform.API.Models
 {
     public class UserModel
     {
