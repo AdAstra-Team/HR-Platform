@@ -11,24 +11,28 @@ namespace AdAstra.HRPlatform.API.Services
         private readonly IEfRepository<User> _userRepository;
         private readonly IConfiguration _configuration;
         private readonly ITokenService _tokenService;
+        private readonly IPasswordHashingService _passwordHashingService;
         private readonly IMapper _mapper;
 
         public UserService(IEfRepository<User> userRepository,
                            IConfiguration configuration,
                            IMapper mapper,
-                           ITokenService tokenService)
+                           ITokenService tokenService,
+                           IPasswordHashingService passwordHashingService)
         {
             _userRepository = userRepository;
             _configuration = configuration;
             _mapper = mapper;
             _tokenService = tokenService;
+            _passwordHashingService = passwordHashingService;
         }
 
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
         {
             var user = _userRepository
                 .GetAll()
-                .FirstOrDefault(x => x.Username == model.Username && x.Password == model.Password);
+                .FirstOrDefault(x => x.Username == model.Username && 
+                                     _passwordHashingService.VerifyPassword(model.Password, x.Password));
 
             if (user == null)
             {
@@ -47,6 +51,8 @@ namespace AdAstra.HRPlatform.API.Services
         public async Task<AuthenticateResponse> Register(UserModel userModel)
         {
             var user = _mapper.Map<User>(userModel);
+
+            user.Password = _passwordHashingService.HashPassword(userModel.Password);
 
             var addedUser = await _userRepository.Add(user);
 

@@ -2,5 +2,6 @@
 {
     public class Candidate : User
     {
+        public int Expirience { get; set; }
     }
 }
