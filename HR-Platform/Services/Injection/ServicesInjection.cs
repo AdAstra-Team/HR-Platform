@@ -1,4 +1,6 @@
-﻿using AdAstra.HRPlatform.API.Services.Interfaces;
+﻿using AdAstra.HRPlatform.Domain.Interfaces;
+using AdAstra.HRPlatform.API.Services.Users;
+using AdAstra.HRPlatform.Domain.Interfaces;
 using System.Runtime.CompilerServices;
 
 namespace AdAstra.HRPlatform.API.Services.Injection

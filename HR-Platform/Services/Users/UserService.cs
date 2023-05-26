@@ -1,12 +1,11 @@
-using AdAstra.HRPlatform.API.Entities;
-using AdAstra.HRPlatform.API.Entities.Base;
-using AdAstra.HRPlatform.API.Exceptions;
+using AdAstra.HRPlatform.Domain.Exceptions;
 using AdAstra.HRPlatform.API.Helpers;
-using AdAstra.HRPlatform.API.Models;
-using AdAstra.HRPlatform.API.Services.Interfaces;
+using AdAstra.HRPlatform.Domain.Entities;
+using AdAstra.HRPlatform.Domain.Models;
+using AdAstra.HRPlatform.Domain.Interfaces;
 using AutoMapper;
 
-namespace AdAstra.HRPlatform.API.Services
+namespace AdAstra.HRPlatform.API.Services.Users
 {
     public class UserService : IUserService
     {
@@ -79,7 +78,7 @@ namespace AdAstra.HRPlatform.API.Services
                 Username = user.Username,
                 Password = password
             });
-            
+
             return response;
         }
 

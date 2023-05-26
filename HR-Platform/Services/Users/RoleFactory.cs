@@ -1,10 +1,9 @@
-﻿using AdAstra.HRPlatform.API.Entities;
-using AdAstra.HRPlatform.API.Entities.Base;
-using AdAstra.HRPlatform.API.Entities.Roles;
-using AdAstra.HRPlatform.API.Exceptions;
-using AdAstra.HRPlatform.API.Services.Interfaces;
+﻿using AdAstra.HRPlatform.Domain.Entities.Base;
+using AdAstra.HRPlatform.Domain.Entities.Roles;
+using AdAstra.HRPlatform.Domain.Exceptions;
+using AdAstra.HRPlatform.Domain.Interfaces;
 
-namespace AdAstra.HRPlatform.API.Services
+namespace AdAstra.HRPlatform.API.Services.Users
 {
     public class RoleFactory : IRoleFactory
     {

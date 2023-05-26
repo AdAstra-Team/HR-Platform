@@ -1,5 +1,5 @@
-﻿using AdAstra.HRPlatform.API.Entities.Base;
-using AdAstra.HRPlatform.API.Services.Interfaces;
+﻿using AdAstra.HRPlatform.Domain.Entities.Base;
+using AdAstra.HRPlatform.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdAstra.HRPlatform.API.Helpers

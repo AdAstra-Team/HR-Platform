@@ -1,7 +1,8 @@
 ﻿using System.Security.Cryptography;
-using AdAstra.HRPlatform.API.Services.Interfaces;
+using AdAstra.HRPlatform.Domain.Interfaces;
+using AdAstra.HRPlatform.Domain.Interfaces;
 
-namespace AdAstra.HRPlatform.API.Services
+namespace AdAstra.HRPlatform.API.Services.Users
 {
     public class PasswordHashingService : IPasswordHashingService
     {

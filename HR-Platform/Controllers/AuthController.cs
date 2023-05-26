@@ -1,7 +1,7 @@
-﻿using AdAstra.HRPlatform.API.Exceptions;
-using AdAstra.HRPlatform.API.Models;
-using AdAstra.HRPlatform.API.Services.Interfaces;
+﻿using AdAstra.HRPlatform.Domain.Models;
+using AdAstra.HRPlatform.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using AdAstra.HRPlatform.Domain.Exceptions;
 
 namespace AdAstra.HRPlatform.API.Controllers
 {

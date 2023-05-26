@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AdAstra.HRPlatform.API.Entities.Base;
-using AdAstra.HRPlatform.API.Services.Interfaces;
+using AdAstra.HRPlatform.Domain.Entities.Base;
+using AdAstra.HRPlatform.Domain.Interfaces;
 
 namespace AdAstra.HRPlatform.API.Services
 {

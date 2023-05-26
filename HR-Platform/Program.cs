@@ -4,16 +4,16 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using AdAstra.HRPlatform.API.Identity;
 using System.Configuration;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using AdAstra.HRPlatform.API.Helpers;
-using AdAstra.HRPlatform.API.Services.Interfaces;
 using AdAstra.HRPlatform.API.Services.Injection;
 using FluentValidation.AspNetCore;
+using AdAstra.HRPlatform.API;
+using AdAstra.HRPlatform.Domain.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

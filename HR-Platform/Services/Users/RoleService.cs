@@ -1,7 +1,7 @@
-﻿using AdAstra.HRPlatform.API.Entities;
-using AdAstra.HRPlatform.API.Services.Interfaces;
+﻿using AdAstra.HRPlatform.Domain.Entities;
+using AdAstra.HRPlatform.Domain.Interfaces;
 
-namespace AdAstra.HRPlatform.API.Services
+namespace AdAstra.HRPlatform.API.Services.Users
 {
     public class RoleService : IRoleService
     {

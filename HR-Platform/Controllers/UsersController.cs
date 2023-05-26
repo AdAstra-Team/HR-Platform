@@ -1,12 +1,10 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using AdAstra.HRPlatform.API.Helpers;
-using AdAstra.HRPlatform.API.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using AdAstra.HRPlatform.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
-using AdAstra.HRPlatform.API.Entities;
-using AdAstra.HRPlatform.API.Services.Interfaces;
+using AdAstra.HRPlatform.Domain.Entities;
+using AdAstra.HRPlatform.Domain.Interfaces;
 using System.ComponentModel.DataAnnotations;
-using AdAstra.HRPlatform.API.Exceptions;
+using AdAstra.HRPlatform.Domain.Exceptions;
 
 namespace AdAstra.HRPlatform.API.Controllers
 {

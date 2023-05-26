@@ -1,14 +1,13 @@
-﻿using AdAstra.HRPlatform.API.Entities;
-using AdAstra.HRPlatform.API.Helpers;
-using AdAstra.HRPlatform.API.Services.Interfaces;
-using Microsoft.AspNetCore.Mvc;
+﻿using AdAstra.HRPlatform.API.Helpers;
+using AdAstra.HRPlatform.Domain.Entities;
+using AdAstra.HRPlatform.Domain.Interfaces;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace AdAstra.HRPlatform.API.Services
+namespace AdAstra.HRPlatform.API.Services.Users
 {
     public class TokenService : ITokenService
     {
@@ -60,7 +59,9 @@ namespace AdAstra.HRPlatform.API.Services
             var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out securityToken);
             var jwtSecurityToken = securityToken as JwtSecurityToken;
             if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+            {
                 throw new SecurityTokenException("Invalid token");
+            }
             return principal;
         }
     }

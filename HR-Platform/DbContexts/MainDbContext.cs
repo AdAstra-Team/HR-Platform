@@ -1,6 +1,6 @@
-﻿using AdAstra.HRPlatform.API.Entities;
-using AdAstra.HRPlatform.API.Entities.Base;
-using AdAstra.HRPlatform.API.Entities.Roles;
+﻿using AdAstra.HRPlatform.Domain.Entities;
+using AdAstra.HRPlatform.Domain.Entities.Base;
+using AdAstra.HRPlatform.Domain.Entities.Roles;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
