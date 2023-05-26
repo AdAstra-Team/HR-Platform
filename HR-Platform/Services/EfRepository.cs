@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AdAstra.HRPlatform.API.Entities;
+using AdAstra.HRPlatform.API.Entities.Base;
 using AdAstra.HRPlatform.API.Services.Interfaces;
 
 namespace AdAstra.HRPlatform.API.Services
@@ -15,9 +15,9 @@ namespace AdAstra.HRPlatform.API.Services
             _context = context;
         }
 
-        public List<T> GetAll()
+        public IEnumerable<T> GetAll()
         {
-            return _context.Set<T>().ToList();
+            return _context.Set<T>();
         }
 
         public T GetById(long id)

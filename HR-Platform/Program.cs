@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using AdAstra.HRPlatform.API.Helpers;
 using AdAstra.HRPlatform.API.Services.Interfaces;
 using AdAstra.HRPlatform.API.Services.Injection;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 

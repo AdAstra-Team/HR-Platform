@@ -9,6 +9,8 @@ namespace AdAstra.HRPlatform.API.Services.Injection
         {
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IRoleFactory, RoleFactory>();
+            services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IPasswordHashingService, PasswordHashingService>();
         }
     }

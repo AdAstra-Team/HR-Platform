@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using AdAstra.HRPlatform.API.Entities.Base;
 
 namespace AdAstra.HRPlatform.API.Entities
 {
@@ -13,7 +14,7 @@ namespace AdAstra.HRPlatform.API.Entities
         public string? Phone { get; set; }
         public string? Telegram { get; set; }
         public int Expirience { get; set; }
-        public IEnumerable<SkillTag>? Skills { get; set; }
-        public IEnumerable<ScheduleTag>? ScheduleTags { get; set; }
+        public ICollection<SkillTag>? Skills { get; set; }
+        public ICollection<ScheduleTag>? ScheduleTags { get; set; }
     }
 }

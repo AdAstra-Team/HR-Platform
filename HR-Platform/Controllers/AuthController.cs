@@ -1,5 +1,5 @@
-﻿using AdAstra.HRPlatform.API.Models;
-using AdAstra.HRPlatform.API.Services.Exceptions;
+﻿using AdAstra.HRPlatform.API.Exceptions;
+using AdAstra.HRPlatform.API.Models;
 using AdAstra.HRPlatform.API.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 

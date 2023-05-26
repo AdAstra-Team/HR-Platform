@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace AdAstra.HRPlatform.API.Entities
+namespace AdAstra.HRPlatform.API.Entities.Base
 {
-    public class BaseEntity
+    public abstract class BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

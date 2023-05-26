@@ -1,6 +1,8 @@
 using AdAstra.HRPlatform.API.Entities;
+using AdAstra.HRPlatform.API.Entities.Base;
+using AdAstra.HRPlatform.API.Exceptions;
+using AdAstra.HRPlatform.API.Helpers;
 using AdAstra.HRPlatform.API.Models;
-using AdAstra.HRPlatform.API.Services.Exceptions;
 using AdAstra.HRPlatform.API.Services.Interfaces;
 using AutoMapper;
 
@@ -12,19 +14,22 @@ namespace AdAstra.HRPlatform.API.Services
         private readonly IConfiguration _configuration;
         private readonly ITokenService _tokenService;
         private readonly IPasswordHashingService _passwordHashingService;
+        private readonly IRoleService _roleService;
         private readonly IMapper _mapper;
 
         public UserService(IEfRepository<User> userRepository,
                            IConfiguration configuration,
                            IMapper mapper,
                            ITokenService tokenService,
-                           IPasswordHashingService passwordHashingService)
+                           IPasswordHashingService passwordHashingService,
+                           IRoleService roleService)
         {
             _userRepository = userRepository;
             _configuration = configuration;
             _mapper = mapper;
             _tokenService = tokenService;
             _passwordHashingService = passwordHashingService;
+            _roleService = roleService;
         }
 
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
@@ -55,7 +60,19 @@ namespace AdAstra.HRPlatform.API.Services
             var password = user.Password;
             user.Password = _passwordHashingService.HashPassword(password);
 
+            if (!ValidationHelper.ValidateUnique(user, _userRepository, u => u.Username))
+            {
+                throw new ServiceLayerException($"User with username '{user.Username}' is alreay registered.");
+            }
+
+            if (!ValidationHelper.ValidateUnique(user, _userRepository, u => u.Email))
+            {
+                throw new ServiceLayerException($"User with email '{user.Email}' is alreay registered.");
+            }
+
+
             var addedUser = _userRepository.Add(user);
+            _roleService.AssignRole(user, userModel.Role);
 
             var response = Authenticate(new AuthenticateRequest
             {
@@ -65,7 +82,7 @@ namespace AdAstra.HRPlatform.API.Services
             
             return response;
         }
-        
+
         public IEnumerable<User> GetAll()
         {
             return _userRepository.GetAll();

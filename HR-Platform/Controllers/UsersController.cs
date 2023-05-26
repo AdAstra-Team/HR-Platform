@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using AdAstra.HRPlatform.API.Entities;
 using AdAstra.HRPlatform.API.Services.Interfaces;
 using System.ComponentModel.DataAnnotations;
+using AdAstra.HRPlatform.API.Exceptions;
 
 namespace AdAstra.HRPlatform.API.Controllers
 {
@@ -38,6 +39,10 @@ namespace AdAstra.HRPlatform.API.Controllers
             catch (ValidationException ex)
             {
                 return BadRequest($"Validation Error: {ex.Message}");
+            }
+            catch (ServiceLayerException ex)
+            {
+                return BadRequest($"Service Error: {ex.Message}");
             }
         }
 

@@ -1,4 +1,6 @@
 ﻿using AdAstra.HRPlatform.API.Entities;
+using AdAstra.HRPlatform.API.Entities.Base;
+using AdAstra.HRPlatform.API.Entities.Roles;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
@@ -14,6 +16,8 @@ public class MainDbContext : DbContext
     }
 
     public DbSet<User> Users { get; set; }
+    public DbSet<Role> Roles { get; set; }
+    public DbSet<Vacancy> Vacancies { get; set; }
     public DbSet<CandidateInfo> CandidateInfos { get; set; }
     public DbSet<SkillTag> SkillTags { get; set; }
     public DbSet<ScheduleTag> ScheduleTags { get; set; }
@@ -41,6 +45,21 @@ public class MainDbContext : DbContext
                 Name = tag
             })
         );
+
+        modelBuilder.Entity<UserRole>()
+            .HasOne(ur => ur.User)
+            .WithMany(u => u.UserRoles)
+            .HasForeignKey(ur => ur.UserId);
+
+        modelBuilder.Entity<UserRole>()
+            .HasOne(ur => ur.Role)
+            .WithMany()
+            .HasForeignKey(ur => ur.RoleId);
+
+        modelBuilder.Entity<AdminRole>().ToTable("AdminRoles");
+        modelBuilder.Entity<HrbrRole>().ToTable("HRBRRoles");
+        modelBuilder.Entity<HRManagerRole>().ToTable("HRManagerRoles");
+        modelBuilder.Entity<EmployerRole>().ToTable("EmployerRoles");
     }
 
     public override int SaveChanges()
