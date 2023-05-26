@@ -2,6 +2,6 @@
 {
     public class SkillTag : BaseEntity
     {
-        public string Tag { get; set; }
+        public string Name { get; set; }
     }
 }

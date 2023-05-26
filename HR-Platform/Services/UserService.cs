@@ -31,7 +31,7 @@ namespace AdAstra.HRPlatform.API.Services
         {
             var user = _userRepository
                 .GetAll()
-                .FirstOrDefault(x => x.Username == model.Username && 
+                .FirstOrDefault(x => x.Username == model.Username &&
                                      _passwordHashingService.VerifyPassword(model.Password, x.Password));
 
             if (user == null)
@@ -52,14 +52,15 @@ namespace AdAstra.HRPlatform.API.Services
         {
             var user = _mapper.Map<User>(userModel);
 
-            user.Password = _passwordHashingService.HashPassword(userModel.Password);
+            var password = user.Password;
+            user.Password = _passwordHashingService.HashPassword(password);
 
-            var addedUser = await _userRepository.Add(user);
+            var addedUser = _userRepository.Add(user);
 
             var response = Authenticate(new AuthenticateRequest
             {
                 Username = user.Username,
-                Password = user.Password
+                Password = password
             });
             
             return response;

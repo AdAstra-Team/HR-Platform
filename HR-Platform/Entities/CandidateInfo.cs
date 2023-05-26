@@ -1,10 +1,14 @@
-﻿namespace AdAstra.HRPlatform.API.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace AdAstra.HRPlatform.API.Entities
 {
-    public class Candidate : BaseEntity
+    public class CandidateInfo : BaseEntity
     {
+        public Vacancy Vacancy { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Username { get; set; }
+        [EmailAddress]
         public string Email { get; set; }
         public string? Phone { get; set; }
         public string? Telegram { get; set; }

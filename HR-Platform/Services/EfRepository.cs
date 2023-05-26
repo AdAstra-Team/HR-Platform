@@ -33,10 +33,10 @@ namespace AdAstra.HRPlatform.API.Services
             return result;
         }
 
-        public async Task<long> Add(T entity)
+        public long Add(T entity)
         {
-            var result = await _context.Set<T>().AddAsync(entity);
-            await _context.SaveChangesAsync();
+            var result = _context.Set<T>().Add(entity);
+            _context.SaveChanges();
             return result.Entity.Id;
         }
 

@@ -5,6 +5,7 @@ using AdAstra.HRPlatform.API.Models;
 using Microsoft.AspNetCore.Authorization;
 using AdAstra.HRPlatform.API.Entities;
 using AdAstra.HRPlatform.API.Services.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdAstra.HRPlatform.API.Controllers
 {
@@ -21,17 +22,23 @@ namespace AdAstra.HRPlatform.API.Controllers
 
         [HttpPost("register")]
         [ProducesResponseType(typeof(AuthenticateResponse), 200)]
-        [ProducesResponseType(typeof(BadRequestObjectResult), 400)]
         public async Task<IActionResult> Register(UserModel userModel)
         {
-            var response = await _userService.Register(userModel);
-
-            if (response == null)
+            try
             {
-                return BadRequest(new {message = "Didn't register!"});
-            }
+                var response = await _userService.Register(userModel);
 
-            return Ok(response);
+                if (response == null)
+                {
+                    return BadRequest(new { message = "Didn't register!" });
+                }
+
+                return Ok(response);
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest($"Validation Error: {ex.Message}");
+            }
         }
 
         [Authorize]
@@ -46,7 +53,6 @@ namespace AdAstra.HRPlatform.API.Controllers
         [Authorize]
         [HttpGet("me")]
         [ProducesResponseType(typeof(UserModel), 200)]
-        [ProducesResponseType(typeof(NotFoundObjectResult), 404)]
         public IActionResult GetMe()
         {
             var user = _userService.GetAll()

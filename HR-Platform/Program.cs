@@ -49,6 +49,7 @@ builder.Services.AddSwaggerGen(opt =>
     });
 });
 
+builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 builder.Services.AddDbContext<MainDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("MainDbConnection")));
 

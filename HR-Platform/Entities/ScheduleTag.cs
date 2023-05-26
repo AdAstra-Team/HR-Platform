@@ -2,6 +2,6 @@
 {
     public class ScheduleTag : BaseEntity
     {
-        public string Schedule { get; set; }
+        public string Name { get; set; }
     }
 }

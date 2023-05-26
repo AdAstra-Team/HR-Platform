@@ -8,7 +8,7 @@ namespace AdAstra.HRPlatform.API.Services.Interfaces
     {
         List<T> GetAll();
         T GetById(long id);
-        Task<long> Add(T entity);
+        long Add(T entity);
 
         void Update(T entity);
         // TODO: expand if needed
