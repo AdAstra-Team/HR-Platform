@@ -91,7 +91,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c => 
     {
-        c.RoutePrefix = "api/swagger";
+        c.RoutePrefix = "api/v1/swagger";
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Your API V1");
         c.DocExpansion(DocExpansion.None);
     });

@@ -7,6 +7,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["HR-Platform/API.csproj", "HR-Platform/"]
+COPY ["Domain/Domain.csproj", "Domain/"]
 RUN dotnet restore "HR-Platform/API.csproj"
 COPY . .
 WORKDIR "/src/HR-Platform"
