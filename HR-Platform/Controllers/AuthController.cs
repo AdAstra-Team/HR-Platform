@@ -1,12 +1,12 @@
-﻿using AdAstra.HRPlatform.Domain.Models;
-using AdAstra.HRPlatform.Domain.Interfaces;
+﻿using AdAstra.HRPlatform.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using AdAstra.HRPlatform.Domain.Exceptions;
+using AdAstra.HRPlatform.Domain.Models.Users;
 
 namespace AdAstra.HRPlatform.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1/[controller]")]
     public class AuthController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -30,7 +30,7 @@ namespace AdAstra.HRPlatform.API.Controllers
         }
 
         [HttpPost("refresh")]
-        public IActionResult Refresh(TokensModel model)
+        public IActionResult Refresh(TokensRequest model)
         {
             AuthenticateResponse? response;
             try

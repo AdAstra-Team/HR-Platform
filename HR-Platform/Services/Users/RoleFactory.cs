@@ -9,11 +9,11 @@ namespace AdAstra.HRPlatform.API.Services.Users
     {
         public Role Create(string role, params object[] args)
         {
-            return role switch
+            return role.ToLower() switch
             {
-                "HRManager" => new HRManagerRole(),
-                "Hrbr" => new HrbrRole(),
-                "Employer" => new EmployerRole(),
+                "hrmanager" => new HRManagerRole(),
+                "hrbp" => new HrbpRole(),
+                "employer" => new EmployerRole(),
                 _ => throw new ServiceLayerException("Role not found")
             };
         }

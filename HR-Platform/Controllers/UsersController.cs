@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using AdAstra.HRPlatform.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using AdAstra.HRPlatform.Domain.Entities;
 using AdAstra.HRPlatform.Domain.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using AdAstra.HRPlatform.Domain.Exceptions;
+using AdAstra.HRPlatform.Domain.Models.Users;
 
 namespace AdAstra.HRPlatform.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1/[controller]")]
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -21,7 +21,7 @@ namespace AdAstra.HRPlatform.API.Controllers
 
         [HttpPost("register")]
         [ProducesResponseType(typeof(AuthenticateResponse), 200)]
-        public async Task<IActionResult> Register(UserModel userModel)
+        public async Task<IActionResult> Register(RegisterRequest userModel)
         {
             try
             {
@@ -55,11 +55,12 @@ namespace AdAstra.HRPlatform.API.Controllers
 
         [Authorize]
         [HttpGet("me")]
-        [ProducesResponseType(typeof(UserModel), 200)]
+        [ProducesResponseType(typeof(RegisterRequest), 200)]
         public IActionResult GetMe()
         {
             var user = _userService.GetAll()
-                .FirstOrDefault(u => u.Username == User.Identity?.Name);
+                .FirstOrDefault(u => 
+                u.Username == User.Identity?.Name);
             if (user == null)
             {
                 return NotFound("User is not found");

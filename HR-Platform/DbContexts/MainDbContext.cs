@@ -59,8 +59,12 @@ public class MainDbContext : DbContext
             .WithMany()
             .HasForeignKey(ur => ur.RoleId);
 
+        modelBuilder.Entity<User>()
+            .HasMany(u => u.UserRoles)
+            .WithOne(u => u.User);
+
         modelBuilder.Entity<AdminRole>().ToTable("AdminRoles");
-        modelBuilder.Entity<HrbrRole>().ToTable("HRBRRoles");
+        modelBuilder.Entity<HrbpRole>().ToTable("HRBRRoles");
         modelBuilder.Entity<HRManagerRole>().ToTable("HRManagerRoles");
         modelBuilder.Entity<EmployerRole>().ToTable("EmployerRoles");
     }

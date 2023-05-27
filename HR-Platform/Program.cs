@@ -12,8 +12,15 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using AdAstra.HRPlatform.API.Helpers;
 using AdAstra.HRPlatform.API.Services.Injection;
 using FluentValidation.AspNetCore;
-using AdAstra.HRPlatform.API;
 using AdAstra.HRPlatform.Domain.Interfaces;
+using Swashbuckle.AspNetCore.SwaggerUI;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using Microsoft.Owin;
+using Microsoft.Owin.Security.Cookies;
+using Owin;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -72,7 +79,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddScoped(typeof(IEfRepository<>), typeof(EfRepository<>));
 
-builder.Services.AddCors();
+//builder.Services.AddCors();
 builder.Services.AddMainServices();
 builder.Services.AddAutoMapper(typeof(UserProfile));
 
@@ -82,7 +89,12 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c => 
+    {
+        c.RoutePrefix = "api/swagger";
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Your API V1");
+        c.DocExpansion(DocExpansion.None);
+    });
 }
 
 app.MapControllers();

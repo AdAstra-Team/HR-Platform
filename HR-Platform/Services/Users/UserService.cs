@@ -1,9 +1,9 @@
 using AdAstra.HRPlatform.Domain.Exceptions;
 using AdAstra.HRPlatform.API.Helpers;
 using AdAstra.HRPlatform.Domain.Entities;
-using AdAstra.HRPlatform.Domain.Models;
 using AdAstra.HRPlatform.Domain.Interfaces;
 using AutoMapper;
+using AdAstra.HRPlatform.Domain.Models.Users;
 
 namespace AdAstra.HRPlatform.API.Services.Users
 {
@@ -52,26 +52,14 @@ namespace AdAstra.HRPlatform.API.Services.Users
             return new AuthenticateResponse(user, token);
         }
 
-        public async Task<AuthenticateResponse> Register(UserModel userModel)
+        public async Task<AuthenticateResponse> Register(RegisterRequest userModel)
         {
             var user = _mapper.Map<User>(userModel);
 
+            Validate(user);
+
             var password = user.Password;
             user.Password = _passwordHashingService.HashPassword(password);
-
-            if (!ValidationHelper.ValidateUnique(user, _userRepository, u => u.Username))
-            {
-                throw new ServiceLayerException($"User with username '{user.Username}' is alreay registered.");
-            }
-
-            if (!ValidationHelper.ValidateUnique(user, _userRepository, u => u.Email))
-            {
-                throw new ServiceLayerException($"User with email '{user.Email}' is alreay registered.");
-            }
-
-
-            var addedUser = _userRepository.Add(user);
-            _roleService.AssignRole(user, userModel.Role);
 
             var response = Authenticate(new AuthenticateRequest
             {
@@ -82,9 +70,23 @@ namespace AdAstra.HRPlatform.API.Services.Users
             return response;
         }
 
-        public IEnumerable<User> GetAll()
+        private void Validate(User user)
         {
-            return _userRepository.GetAll();
+            if (!ValidationHelper.ValidateUnique(user, _userRepository, u => u.Username))
+            {
+                throw new ServiceLayerException($"User with username '{user.Username}' is alreay registered.");
+            }
+
+            if (!ValidationHelper.ValidateUnique(user, _userRepository, u => u.Email))
+            {
+                throw new ServiceLayerException($"User with email '{user.Email}' is alreay registered.");
+            }
+        }
+
+        public IEnumerable<UserResponse> GetAll()
+        {
+            return _userRepository.GetAll().Select(u => 
+                _mapper.Map<UserResponse>(u));
         }
 
         public User GetById(int id)
@@ -92,7 +94,7 @@ namespace AdAstra.HRPlatform.API.Services.Users
             return _userRepository.GetById(id);
         }
 
-        public AuthenticateResponse UpdateToken(TokensModel model)
+        public AuthenticateResponse UpdateToken(TokensRequest model)
         {
             string accessToken = model.AccessToken;
             string refreshToken = model.RefreshToken;
